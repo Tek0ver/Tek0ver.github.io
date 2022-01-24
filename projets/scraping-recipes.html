@@ -3,9 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Thibault F. - Contact</title>
-    
-      <meta name="description" content="Mes contacts, Mail, Github, LinkedIn...">
+    <title>Thibault F. - Obtenir les recettes d'un site</title>
     
     <link rel="stylesheet" href="/assets/css/styles.css">
   </head>
@@ -44,52 +42,60 @@
   </div>
 </div>
     <div class="container-fluid banner">
-      <h1 class="my-5 text-center">Contact</h1>
+      <h1 class="my-5 text-center">Obtenir les recettes d'un site</h1>
     </div>
     <div class="container flex-grow-1 my-5">
-      <div class="row gy-5">
+      <header>
+    
+    <img class="project_header" src="/assets/images/scraping_recipes_header.jpg" alt="Image header du projet">
 
-  
+    <h1 id=project-title class=mt-5>Obtenir les recettes d'un site</h1>
+    <p>Récupérer les recettes de cuisine d'un site contenant un ingrédient spécifique et en stocker les informations dans un fichier.</p>
 
-    <div class="col-3 col-sm-6 d-flex justify-content-end">
-        <img src="/assets/images/bootstrap-icons-1.5.0/envelope.svg" alt="Mail icone" width="64" height="64">
-    </div>
-    <div class="col-9 col-sm-6">
-        <h2 class="fw-bold">Mail</h2>
-        <a href="mailto:thibault.foure@outlook.com" target="_blank" rel="noopener">thibault.foure@outlook.com</a>
-    </div>
-  
-  
+    <p><img src="/assets/images/bootstrap-icons-1.5.0/github.svg" alt="GitHub icone" width="32" height="32"> Lien GitHub : <a href="https://github.com/Tek0ver/scraping-recipes" target="_blank">https://github.com/Tek0ver/scraping-recipes</a></p>
 
-  
+    <p>
+        
+            <span class="badge bg-secondary">Scraping</span>
+        
+    </p>
 
-  
+    <!-- <p>Débuté le 23-01-2022
 
-  
+        
+            <span class="badge bg-primary">En cours</span>
+        
+    </p> -->
 
-    <div class="col-3 col-sm-6 d-flex justify-content-end">
-        <img src="/assets/images/bootstrap-icons-1.5.0/github.svg" alt="GitHub icone" width="64" height="64">
-    </div>
-    <div class="col-9 col-sm-6">
-        <h2 class="fw-bold">GitHub</h2>
-        <a href="https://github.com/Tek0ver" target="_blank" rel="noopener">Tek0ver</a>
-    </div>
-  
-  
+    <hr/>
 
-  
+    <h2>Présentation</h2>
 
-    <div class="col-3 col-sm-6 d-flex justify-content-end">
-        <img src="/assets/images/bootstrap-icons-1.5.0/linkedin.svg" alt="LinkedIn icone" width="64" height="64">
-    </div>
-    <div class="col-9 col-sm-6">
-        <h2 class="fw-bold">LinkedIn</h2>
-        <a href="https://www.linkedin.com/in/thibault-four%C3%A9/" target="_blank" rel="noopener">Thibault Fouré</a>
-    </div>
-  
-  
+<p>Le but est de scraper le site de recettes de cuisine suivant : <a href="https://recipes.lewagon.com/" target="_blank">https://recipes.lewagon.com/</a>, puis de stocker le nom de chaque recette ainsi que la difficulté et le temps de préparation associé, mais uniquement les recettes contenant l’ingrédient voulu.</p>
 
-</div>
+<h2>Fonctionnement</h2>
+
+<p>Tout ce passe avec un script Python (recipe.py) au travers de la console et en donnant l’ingrédient désiré, ici “Tea” pour l’exemple.</p>
+
+<p>Le script demande de télécharger à l’aide de la commande curl la page en local si celle-ci n’est pas détecter, on peut ensuite y récupérer les informations en lancer le script.</p>
+
+<p><img src="/assets/images/scraping_recipe_step_1.png" alt="Step 1" /></p>
+
+<p>Voici le fichier tea.csv généré par le script :</p>
+
+<p><img src="/assets/images/scraping_recipe_step_2.png" alt="Step 2" /></p>
+
+<p>Voici à quoi ressemble la page correspondante :</p>
+
+<p><img src="/assets/images/scraping_recipe_step_3.png" alt="Step 3" /></p>
+
+<!-- ## Améliorations à faire
+
+TODO: check list avec les ajouts barrés quand ils seront faits -->
+
+
+      
+</header>
 
     </div>
     <div class="header_footer_color">
