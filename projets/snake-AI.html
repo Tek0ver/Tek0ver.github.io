@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Thibault F. - Snake IA</title>
+    
+    <link rel="stylesheet" href="/assets/css/styles.css">
+  </head>
+  <body id="bootstrap_overrides">
+    <div class="header_footer_color">
+  <div class="container-fluid">
+    <div class="row">
+      <nav class="col navbar navbar-expand-sm navbar-dark">
+        <a class="navbar-brand navbar_title" id="bootstrap_overrides" href="/">Thibault FOURÉ</a>
+        <button class="navbar-toggler nav_button" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-label="Dérouler menu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="navbarContent" class="collapse navbar-collapse">
+          <ul class="navbar-nav navbar_center">
+            
+            <li class="nav-item">
+              <a class="nav-link nav_a" href="/">Accueil</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link nav_a" href="/projets.html">Projets</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link nav_a" href="/competences.html">Compétences</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link nav_a" href="/contact.html">Contact</a>
+            </li>
+            
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+</div>
+    <div class="container-fluid banner">
+      <h1 class="my-5 text-center">Snake IA</h1>
+    </div>
+    <div class="container flex-grow-1 my-5">
+      <header>
+    
+    <img class="project_header" src="/assets/images/snake_ai/snake_ai_header.png" alt="Image header du projet">
+
+    <h1 id=project-title class=mt-5>Snake IA</h1>
+    <p>Création d'un jeu de Snake et d'une IA par Reinforcement Learning</p>
+
+    <p><img src="/assets/images/bootstrap-icons-1.5.0/github.svg" alt="GitHub icone" width="32" height="32"> Lien GitHub : <a href="https://github.com/Tek0ver/python-snake-ai" target="_blank">https://github.com/Tek0ver/python-snake-ai</a></p>
+
+    <p>
+        
+            <span class="badge bg-secondary">Python</span>
+        
+            <span class="badge bg-secondary">IA</span>
+        
+            <span class="badge bg-secondary">Jeux</span>
+        
+    </p>
+
+    <p>
+        
+            <span class="badge bg-primary">En cours</span>
+        
+        
+        Débuté le 21-04-2022
+    </p>
+
+    <hr/>
+
+    <h2>Présentation</h2>
+
+<p>Pour ce projet j’ai codé un jeu de <a href="https://fr.wikipedia.org/wiki/Snake_(genre_de_jeu_vid%C3%A9o)" target="_blank">Snake</a> en Python à l’aide du module Pygame, pour ensuite entraîner une Intelligence Artificielle par <a href="https://fr.wikipedia.org/wiki/Apprentissage_par_renforcement" target="_blank">Reinforcement learning</a>.</p>
+
+<p>J’ai utilisé un algorithme <a href="https://fr.wikipedia.org/wiki/Algorithme_NEAT" target="_blank">NEAT</a>, du module <a href="https://github.com/CodeReclaimers/neat-python" target="_blank">NEAT-Python</a>.</p>
+
+<p>Tout d’abord des réseaux de neurones sont générés avec des paramètres aléatoires, un réseau associé à chaque serpent. Ce nombre de réseaux est appelé <strong>population</strong>, ici 150.
+Ensuite ils sont évalués tour à tour, c’est l’entraînement, pour cela ils jouent au jeu jusqu’à perdre, et un score est attribué à chaque serpent, il s’agit du <strong>fitness</strong> du réseau de neurones, dans ma première version le barème est le suivant :</p>
+
+<ul>
+  <li>1 point par avancement d’une case sans perdre</li>
+  <li>100 points par objectif (nourriture) atteint</li>
+  <li>-20 points si le serpent tourne en rond</li>
+  <li>-10 si le serpent ne trouve pas d’objectif après un certain temps</li>
+  <li>-10 si le serpent touche un mur ou lui même</li>
+</ul>
+
+<p>L’algorithme sélectionne les réseaux avec les meilleurs <strong>fitness</strong> puis les multiplie avec quelques variations de paramètres aléatoires (<strong>mutation</strong>) afin de reformer la population. Puis les refait jouer, attribue un score, sélectionne les meilleurs et les multiplie avec des <strong>mutations</strong>.
+Chaque nouvelle génération de réseaux est appelée une <strong>génération</strong>.</p>
+
+<p>Il faut plusieurs <strong>générations</strong> pour arriver à des résultats, au début peu de serpents éviterons les murs, et encore moins iront vers les objectifs, mais ceux qui le feront auront un meilleur score car ils parcourons plus de cases, les réseaux associés seront donc sélectionnés pour la génération suivante. Au bout de plusieurs générations (environs 150 dans mon cas) pratiquement tous les serpents évitent les murs, des générations après, ils se dirigent vers les objectifs.</p>
+
+<figure class="image">
+  <img src="/assets/images/snake_ai/v0.1-gen-94.gif" alt="v0.1 après 94 générations" />
+  <figcaption>v0.1 après 94 générations</figcaption>
+</figure>
+
+<figure class="image">
+  <img src="/assets/images/snake_ai/v0.1-gen-406.gif" alt="v0.1 après 406 générations" />
+  <figcaption>v0.1 après 406 générations</figcaption>
+</figure>
+
+<p>A la 406 <strong>génération</strong> on peut voir que le serpent se dirige bien vers les objectifs mais n’évite pas son propre corps et finit pas perdre.</p>
+
+<p>Pour avoir les meilleurs résultats possibles il est important de bien choisir les points qu’on attribue ou retire au <strong>fitness</strong>, sans quoi le réseau évoluera dans la mauvaise direction, ces points et malus sont pour le réseau le seul moyen de “comprendre” ce qu’on attend de lui.</p>
+
+<p>Pour la première version je donne aux réseaux 8 entrées (voir image suivante):</p>
+
+<ul>
+  <li>de 1 à 4 : vaut 0 si rien, 1 si mur ou corps du serpent, 2 si objectif.</li>
+  <li>de 5 à 8 : vaut 0 ou 1, 1 indique qu’il y a un objectif dans cette direction.</li>
+</ul>
+
+<div class="row">
+  <div class="col-12 col-sm-6">
+    <figure class="image">
+  <img src="/assets/images/snake_ai/v0.1_inputs_outputs.png" alt="v0.1 inputs_outputs" />
+  <figcaption>v0.1 inputs_outputs</figcaption>
+</figure>
+  </div>
+  <div class="col-12 col-sm-6">
+    <p>Ici les valeurs envoyées au réseau sont :</p>
+    <ul>
+      <li>1 : 0</li>
+      <li>2 : 0</li>
+      <li>3 : 1</li>
+      <li>4 : 0</li>
+      <li>5 : 1</li>
+      <li>6 : 0</li>
+      <li>7 : 1</li>
+      <li>8 : 0</li>
+    </ul>
+  </div>
+</div>
+
+<h2>Améliorations</h2>
+
+<h3>A venir</h3>
+
+<ul>
+  <li>v0.2 : Ajout d’informations affichées (générations, score, etc), de statistiques et de graphiques avec Matplotlib.</li>
+  <li>v0.3 : Amélioration des inputs (augmenter la “vision” du serpent)</li>
+</ul>
+
+<h2>Liens</h2>
+
+<ul>
+  <li><a href="https://www.pygame.org" target="_blank">Pygame</a></li>
+  <li><a href="https://github.com/CodeReclaimers/neat-python" target="_blank">NEAT-Python</a></li>
+</ul>
+
+
+      
+</header>
+
+    </div>
+    <div class="header_footer_color">
+  <div class="container">
+    <div class="row py-3">
+      <footer class="col">
+        <ul class="list-inline text-center m-0">
+          <li class="list-inline-item">Dernière mise à jour du site le 06-05-2022 à 16h02</li>
+          <li class="list-inline-item">&middot;</li>
+          <li class="list-inline-item"><a href="/about.html">À propos</a></li>
+        </ul>
+      </footer>
+    </div>
+  </div>
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+  </body>
+</html>
