@@ -96,7 +96,7 @@ Ensuite ils sont évalués tour à tour, c’est l’entraînement, pour cela il
 <p>L’algorithme sélectionne les réseaux avec les meilleurs <strong>fitness</strong> puis les multiplie avec quelques variations de paramètres aléatoires (<strong>mutation</strong>) afin de reformer la population. Puis les refait jouer, attribue un score, sélectionne les meilleurs et les multiplie avec des <strong>mutations</strong>.
 Chaque nouvelle génération de réseaux est appelée une <strong>génération</strong>.</p>
 
-<p>Il faut plusieurs <strong>générations</strong> pour arriver à des résultats, au début peu de serpents éviterons les murs, et encore moins iront vers les objectifs, mais ceux qui le feront auront un meilleur score car ils parcourons plus de cases, les réseaux associés seront donc sélectionnés pour la génération suivante. Au bout de plusieurs générations (environs 150 dans mon cas) pratiquement tous les serpents évitent les murs, des générations après, ils se dirigent vers les objectifs.</p>
+<p>Il faut plusieurs <strong>générations</strong> pour arriver à des résultats, au début peu de serpents éviterons les murs, et encore moins iront vers les objectifs, mais ceux qui le feront auront un meilleur score car ils parcourons plus de cases, les réseaux associés seront donc sélectionnés pour la génération suivante. Au bout de plusieurs <strong>générations</strong> (environs 150 dans mon cas) pratiquement tous les serpents évitent les murs, des générations après, ils se dirigent vers les objectifs.</p>
 
 <figure class="image">
   <img src="/assets/images/snake_ai/v0.1-gen-94.gif" alt="v0.1 après 94 générations" />
@@ -108,7 +108,7 @@ Chaque nouvelle génération de réseaux est appelée une <strong>génération</
   <figcaption>v0.1 après 406 générations</figcaption>
 </figure>
 
-<p>A la 406 <strong>génération</strong> on peut voir que le serpent se dirige bien vers les objectifs mais n’évite pas son propre corps et finit pas perdre.</p>
+<p>À la 406ième <strong>génération</strong> on peut voir que le serpent se dirige bien vers les objectifs mais n’évite pas son propre corps et finit par perdre.</p>
 
 <p>Pour avoir les meilleurs résultats possibles il est important de bien choisir les points qu’on attribue ou retire au <strong>fitness</strong>, sans quoi le réseau évoluera dans la mauvaise direction, ces points et malus sont pour le réseau le seul moyen de “comprendre” ce qu’on attend de lui.</p>
 
@@ -146,10 +146,12 @@ Chaque nouvelle génération de réseaux est appelée une <strong>génération</
 <p>Version actuelle : v0.1</p>
 
 <ul>
-  <li>v0.1 : .</li>
+  <li>v0.1 : Version minimale pour essayer et apprendre le principe du NEAT.</li>
   <li>v0.2 : Ajout d’informations affichées (générations, score, etc), de statistiques et de graphiques avec Matplotlib.</li>
-  <li>v0.3 : Nettoyage du code et ajout de possibilités de paramétrer .</li>
+  <li>v0.3 : Ajout de possibilités pour paramétrer facilement les récompenses et punitions de la fitness.</li>
   <li>v0.4 : Amélioration des inputs (augmenter la “vision” du serpent).</li>
+  <li>v1.0 : Nettoyage du code.</li>
+  <li>v1.1 : Amélioration visuelle du serpent.</li>
 </ul>
 
 <h2>Liens</h2>
@@ -165,7 +167,7 @@ Chaque nouvelle génération de réseaux est appelée une <strong>génération</
     <div class="row py-3">
       <footer class="col">
         <ul class="list-inline text-center m-0">
-          <li class="list-inline-item">Dernière mise à jour du site le 08-06-2022 à 16h59</li>
+          <li class="list-inline-item">Dernière mise à jour du site le 09-06-2022 à 00h24</li>
           <li class="list-inline-item">&middot;</li>
           <li class="list-inline-item"><a href="/about.html">À propos</a></li>
         </ul>
